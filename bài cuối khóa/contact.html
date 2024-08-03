@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: white
+
+        }
+
+        .navbar {
+            background: linear-gradient(to right, #333, #555);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+        }
+
+        .navbar:hover {
+            background: #444;
+        }
+
+        .navbar a {
+            color: #f2f2f2;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: color 0.3s, background-color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .search-container {
+            margin-left: auto;
+        }
+
+        .form-control {
+            border-radius: 50px;
+            border: 2px solid #4CAF50;
+        }
+
+        .btn-outline-success {
+            border-radius: 50px;
+            border: 2px solid #4CAF50;
+            background-color: transparent;
+            color: #4CAF50;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-outline-success:hover {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        .content {
+            padding: 60px 20px;
+            margin-top: 70px; /* Offset for fixed navbar */
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-container input,
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            width: 100%;
+            position: relative;
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            margin-top: 0; 
+        }
+
+        .dropdown-menu {
+            background-color: #444;
+            border: none;
+        }
+
+        .dropdown-menu a {
+            color: white;
+            padding: 10px 20px;
+            display: block;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="trang chủ.html">Trang chủ</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html"><i class="fas fa-info-circle"></i> Giới thiệu</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-box"></i> Sản phẩm
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="furniture.html">Sản phẩm nội thất</a>
+                            <a class="dropdown-item" href="carpet.html">Thảm</a>
+                            <a class="dropdown-item" href="#">Nến</a>
+                            <a class="dropdown-item" href="#">Đồ trang trí</a>
+                            <a class="dropdown-item" href="#">Chén dĩa</a>
+                            <a class="dropdown-item" href="#">Giấy dán tường</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html"><i class="fas fa-envelope"></i> Liên hệ</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0 search-container" action="/search">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm..." name="search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
+                </form>
+                <div class="navbar-login ml-3">
+                    <a class="btn btn-outline-light" href="index.html">Đăng ký</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="intro">
+            <h1 class="display-4">Liên hệ với chúng tôi</h1>
+            <p class="lead">Nếu bạn có bất kỳ câu hỏi nào, xin vui lòng điền vào biểu mẫu dưới đây để liên lạc với chúng tôi.</p>
+        </div>
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="form-container">
+                        <h2>Biểu mẫu liên hệ</h2>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Họ và tên</label>
+                                <input type="text" class="form-control" id="name" name="from_name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email_id" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">Chủ đề</label>
+                                <input type="text" class="form-control" id="subject" name="subject_id" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Tin nhắn</label>
+                                <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-success btn-block">Gửi</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p>© 2024 - Web bán hàng của bạn. Tất cả các quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("z01Orp9hapaV44ECA"); 
+        })();
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            emailjs.sendForm("service_nf9uzcs", "template_meg14rw", this)
+                .then(function(response) {
+                    alert("Email đã được gửi thành công!");
+                }, function(error) {
+                    alert("Có lỗi xảy ra khi gửi email: " + JSON.stringify(error));
+                });
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

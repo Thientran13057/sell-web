@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký và Đăng nhập</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: white;
+        }
+
+        .navbar {
+            background: linear-gradient(to right, #333, #555);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+            padding: 10px 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar:hover {
+            background: #444;
+        }
+
+        .navbar a {
+            color: #f2f2f2;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: color 0.3s, background-color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .form-control {
+            border-radius: 50px;
+            border: 2px solid #4CAF50;
+            padding: 10px;
+        }
+
+        .btn-outline-success {
+            border-radius: 50px;
+            border: 2px solid #4CAF50;
+            background-color: transparent;
+            color: #4CAF50;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-left: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-outline-success:hover {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        .auth-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .switch-link {
+            color: #007bff;
+            cursor: pointer;
+        }
+
+        .switch-link:hover {
+            text-decoration: underline;
+        }
+
+        .navbar-user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-user-info img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .navbar-user-info span {
+            font-size: 1rem;
+            color: #fff;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="trang chủ.html">Trang chủ</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html"><i class="fas fa-info-circle"></i> Giới thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="product.html"><i class="fas fa-box"></i> Sản phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html"><i class="fas fa-envelope"></i> Liên hệ</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0 search-container" action="/search">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm..." name="search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
+                </form>
+                <div class="navbar-user-info ml-3 d-none">
+                    <img src="" alt="Avatar" id="userAvatar">
+                    <span id="userName" class="text-white ml-2"></span>
+                    <button id="logoutBtn" class="btn btn-outline-light ml-3">Đăng xuất</button>
+                </div>
+                <div class="navbar-login ml-3">
+                    <a class="btn btn-outline-light" href="index.html">Đăng ký</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="auth-container">
+        <form id="loginForm">
+            <h2 class="text-center">Đăng nhập</h2>
+            <div class="form-group">
+                <input type="text" class="form-control" id="loginUsername" placeholder="Tên đăng nhập" required>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="loginPassword" placeholder="Mật khẩu" required>
+            </div>
+            <button type="submit" class="btn btn-custom btn-block" id="loginBtn"><span>Đăng nhập</span></button>
+            <p class="text-center">Hoặc</p>
+            <button type="button" class="btn btn-danger btn-block" id="googleLoginBtn"><i class="fab fa-google"></i> Đăng nhập bằng Google</button>
+            <button type="button" class="btn btn-primary btn-block" id="facebookLoginBtn"><i class="fab fa-facebook"></i> Đăng nhập bằng Facebook</button>
+            <p class="text-center">Chưa có tài khoản? <a class="switch-link" href="#" id="switch-to-register">Đăng ký</a></p>
+        </form>
+
+        <form id="registerForm" style="display: none;">
+            <h2 class="text-center">Đăng ký</h2>
+            <div class="form-group">
+                <input type="text" class="form-control" id="registerUsername" placeholder="Tên đăng nhập" required>
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" id="registerEmail" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="registerPassword" placeholder="Mật khẩu" required>
+            </div>
+            <button type="submit" class="btn btn-custom btn-block" id="registerBtn"><span>Đăng ký</span></button>
+            <p class="text-center">Đã có tài khoản? <a class="switch-link" href="#" id="switch-to-login">Đăng nhập</a></p>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAAtY_e7bsSIusQu5h-Gfl8ahe3mv4PePY",
+            authDomain: "login-4747e.firebaseapp.com",
+            databaseURL: "https://login-4747e-default-rtdb.firebaseio.com",
+            projectId: "login-4747e",
+            storageBucket: "login-4747e.appspot.com",
+            messagingSenderId: "1003718331176",
+            appId: "1:1003718331176:web:c4905f7e565dd29b745e1d"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        document.getElementById('switch-to-register').addEventListener('click', function() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'block';
+        });
+
+        document.getElementById('switch-to-login').addEventListener('click', function() {
+            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+        });
+
+        function toggleButtonLoadingState(button, isLoading) {
+            if (isLoading) {
+                button.classList.add('btn-loading');
+                button.disabled = true;
+            } else {
+                button.classList.remove('btn-loading');
+                button.disabled = false;
+            }
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const loginButton = document.getElementById('loginBtn');
+            toggleButtonLoadingState(loginButton, true);
+
+            const loginEmail = document.getElementById('loginUsername').value;
+            const loginPassword = document.getElementById('loginPassword').value;
+
+            signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+                .then((userCredential) => {
+                    window.location.href = 'trang chủ.html';
+                })
+                .catch((error) => {
+                    alert('Lỗi đăng nhập: ' + error.message);
+                    toggleButtonLoadingState(loginButton, false);
+                });
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const registerButton = document.getElementById('registerBtn');
+            toggleButtonLoadingState(registerButton, true);
+
+            const registerEmail = document.getElementById('registerEmail').value;
+            const registerPassword = document.getElementById('registerPassword').value;
+
+            createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
+                .then((userCredential) => {
+                    alert('Đăng ký thành công');
+                    toggleButtonLoadingState(registerButton, false);
+                    window.location.href = 'trang chủ.html';
+                })
+                .catch((error) => {
+                    alert('Lỗi đăng ký: ' + error.message);
+                    toggleButtonLoadingState(registerButton, false);
+                });
+        });
+
+        document.getElementById('googleLoginBtn').addEventListener('click', function() {
+            const provider = new GoogleAuthProvider();
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    window.location.href = 'trang chủ.html';
+                })
+                .catch((error) => {
+                    alert('Lỗi đăng nhập bằng Google: ' + error.message);
+                });
+        });
+
+        document.getElementById('facebookLoginBtn').addEventListener('click', function() {
+            const provider = new FacebookAuthProvider();
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    window.location.href = 'trang chủ.html';
+                })
+                .catch((error) => {
+                    alert('Lỗi đăng nhập bằng Facebook: ' + error.message);
+                });
+        });
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                const userName = user.displayName || user.email;
+                const userAvatar = user.photoURL || 'default-avatar.png';
+
+                document.getElementById('userName').textContent = userName;
+                document.getElementById('userAvatar').src = userAvatar;
+
+                document.querySelector('.navbar-user-info').classList.remove('d-none');
+                document.querySelector('.navbar-login').classList.add('d-none');
+            } else {
+                document.querySelector('.navbar-user-info').classList.add('d-none');
+                document.querySelector('.navbar-login').classList.remove('d-none');
+            }
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            auth.signOut().then(() => {
+                window.location.href = 'index.html';
+            }).catch((error) => {
+                alert('Lỗi đăng xuất: ' + error.message);
+            });
+        });
+    </script>
+</body>
+</html>
