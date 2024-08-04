@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web bán hàng</title>
+    <link rel="stylesheet" href="furniture.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<style>
+      .dropdown:hover .dropdown-menu {
+            display: block;
+            margin-top: 0; 
+        }
+
+        .dropdown-menu {
+            background-color: #444;
+            border: none;
+        }
+
+        .dropdown-menu a {
+            color: white;
+            padding: 10px 20px;
+            display: block;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #555;
+        }
+        body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #d3cfa4;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.navbar {
+    background: linear-gradient(to right, #333, #555);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 2s;
+}
+
+
+.navbar:hover {
+    background: #444;
+}
+
+.navbar a {
+    color: #f2f2f2;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.search-container {
+    margin-left: auto;
+}
+
+.form-control {
+    border-radius: 50px;
+    border: 2px solid #4CAF50;
+}
+
+.btn-outline-success {
+    border-radius: 50px;
+    border: 2px solid #4CAF50;
+    background-color: transparent;
+    color: #4CAF50;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-outline-success:hover {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.products {
+    padding: 100px 0 50px; 
+    background-color: #fff;
+    margin-top: 60px; 
+}
+
+.products h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.product-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.product-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 300px;
+    padding: 20px;
+    border: 1px solid #ddd; 
+    border-radius: 8px;
+    margin: 20px;
+    box-sizing: border-box;
+    background-color: #fff; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: box-shadow 0.3s; 
+    min-height: 400px;
+}
+
+.product-container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.edited-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+#buy-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: auto;
+}
+
+#buy-button:hover {
+    background-color: #45a049;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.navbar-user-info img {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.navbar-login {
+    margin-left: 10px;
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; 
+}
+
+.dropdown-menu {
+    background-color: #444;
+    border: none;
+}
+
+.dropdown-menu a {
+    color: white;
+    padding: 10px 20px;
+    display: block;
+}
+
+.dropdown-menu a:hover {
+    background-color: #555;
+}
+.navbar-cart {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+            color: #f2f2f2;
+        }
+
+        .navbar-cart i {
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .navbar-cart .cart-count {
+            background-color: #ff0000;
+            color: #fff;
+            border-radius: 50%;
+            padding: 0 5px;
+            margin-left: -10px;
+            margin-top: -10px;
+            font-size: 0.8rem;
+        }
+</style>
+<body>
+    <div id="loggedInUser" style="display: none;"></div>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="trang chủ.html">Trang chủ</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html"><i class="fas fa-info-circle"></i> Giới thiệu</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-box"></i> Sản phẩm
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="furniture.html">Sản phẩm nội thất</a>
+                            <a class="dropdown-item" href="carpet.html">Thảm</a>
+                            <a class="dropdown-item" href="candle.html">Nến</a>
+                            <a class="dropdown-item" href="decoration.html">Đồ trang trí</a>
+                            <a class="dropdown-item" href="dishes.html">Chén dĩa</a>
+                            <a class="dropdown-item" href="wallpaper.html">Giấy dán tường</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html"><i class="fas fa-envelope"></i> Liên hệ</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0 search-container" action="/search">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm..." name="search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
+                </form>
+                <div class="navbar-cart ml-3">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                <div class="navbar-user-info ml-3 d-none">
+                    <img src="" alt="Avatar" id="userAvatar" style="width: 40px; height: 40px; border-radius: 50%;">
+                    <span id="userName" class="text-white ml-2"></span>
+                    <button id="logoutBtn" class="btn btn-outline-light ml-3">Đăng xuất</button>
+                </div>
+                <div class="navbar-login ml-3">
+                    <a class="btn btn-outline-light" href="index.html">Đăng ký</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="products" class="products">
+        <div class="container">
+            <h2>Sản Phẩm Nội Thất</h2>
+            <div class="product-list">
+                <div class="product-container">
+                    <img src="data:image/jpeg;base64,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" alt="Sofa" class="edited-image">
+                    <h3>SOFA TCEI13982</h3>
+                    <p>Giá: 10,000,000 VND</p>
+                    <button id="buy-button">Mua ngay</button>
+                </div>
+                <div class="product-container">
+                    <img src="https://bizweb.dktcdn.net/100/429/325/products/3-71e3df5d-8dbd-40c7-9957-535bce704fff.jpg?v=1659601017140" alt="Bàn" class="edited-image">
+                    <h3>Bàn sofa kim cương mặt kính</h3>
+                    <p>Giá: 5,000,000 VND</p>
+                    <button id="buy-button">Mua ngay</button>
+                </div>
+                <div class="product-container">
+                    <img src="https://bizweb.dktcdn.net/100/429/325/products/ghe-an-khung-ma-vang-sang-trong-ga-685.jpg?v=1719377526487" alt="Ghế" class="edited-image">
+                    <h3>Ghế ăn khung mạ vàng sang trọng </h3>
+                    <p>Giá: 2,000,000 VND</p>
+                    <button id="buy-button">Mua ngay</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let cartCount = 0;
+
+            document.querySelectorAll('.buy-button').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    cartCount++;
+                    document.querySelector('.cart-count').textContent = cartCount;
+                    alert('Sản phẩm đã được thêm vào giỏ hàng!');
+                });
+            });
+        });
+    
+    </script>
+    <footer>
+        <div class="container">
+            <p>© 2024 - Web bán hàng. Tất cả các quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
